@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet"> 
+    <title>index</title>
+</head>
+<body>
+
+        {% if  messages %}
+       
+        {% for message in messages %}
+          <div class="alert alert-success">
+           {{ message }}
+          </div>
+        {% endfor %}
+          
+       {% endif %}
+
+   <div class="jumbotron">
+       <h1 class="display-3">USER PAGE</h1>
+         {% if user.is_authenticated %}
+        <h1 class="display-1"> your name is {{user.username}} </h1>
+        <br>
+        <p class="lead">
+                <a class="btn btn-primary btn-lg" href="/profile" role="button">profile</a>
+            </p>
+            <br>
+        <p class="lead">
+                <a class="btn btn-primary btn-lg" href="/logout" role="button">logout</a>
+            </p>
+        {% else %}
+        <h1 class="display-1"> you are not logged in </h1>
+       <br>
+       <p class="lead">
+           <a class="btn btn-primary btn-lg " href="/login" role="button">login</a>
+       </p>
+       {% endif %}
+       
+   </div>
+   
+
+</body>
+</html>
